@@ -1,0 +1,38 @@
+{
+    "name": "ado-template-helper",
+    "version": "0.0.1",
+    "description": "Helper for azure devops templates",
+    "bin": "./lib/bin.js",
+    "main": "./lib/index.js",
+    "types": "./lib/index.d.ts",
+    "scripts": {
+        "test": "jest",
+        "build": "tsc",
+        "build:check": "tsc --noEmit"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hvdb/ado-template-helper.git"
+    },
+    "keywords": [
+        "azure-pipelines"
+    ],
+    "author": "Henk van den Brink",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/hvdb/ado-template-helper/issues"
+    },
+    "homepage": "https://github.com/hvdb/ado-template-helper#readme",
+    "files": [
+        "bin",
+        "lib"
+    ],
+    "devDependencies": {
+        "@types/jest": "^26.0.24",
+        "@types/node": "^16.4.7",
+        "jest": "^27.0.6",
+        "ts-jest": "^27.0.4",
+        "ts-node": "^10.1.0",
+        "typescript": "^4.3.5"
+    }
+}
