@@ -1,5 +1,5 @@
-#!/usr/bin/env node 
+#!/usr/bin/env node
 
-import adoTemplateHelper from './index';
+import { adoTemplateHelper } from './index';
 
 adoTemplateHelper();

@@ -64,4 +64,8 @@ const adoTemplateHelper = (): void => {
 
 }
 
-export default adoTemplateHelper
+export {
+  adoTemplateHelper,
+  createSnippet,
+  createDoc
+}
