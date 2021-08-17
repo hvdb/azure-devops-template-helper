@@ -10,8 +10,8 @@
         "build": "npm run build:compile && npm run build:after && npm run build:generate",
         "build:compile": "tsc",
         "build:check": "tsc --noEmit",
-        "build:after" :"cp -R ./templates/ ./lib/templates",
-        "build:generate" : "node lib/bin.js"
+        "build:after": "cp -R ./templates/ ./lib/templates",
+        "build:generate": "node lib/bin.js"
     },
     "repository": {
         "type": "git",
@@ -37,5 +37,8 @@
         "ts-jest": "^27.0.4",
         "ts-node": "^10.1.0",
         "typescript": "^4.3.5"
+    },
+    "dependencies": {
+        "commander": "^8.1.0"
     }
 }

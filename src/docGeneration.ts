@@ -19,8 +19,8 @@ function createInputMarkdown(inputs: any, element: any): string {
 
 function createDoc(templateJsonLocation: string, markdownOutputLocation: string, templateJsonFileName: string = 'template.json', markdownFileName?: string) {
     console.log('Starting generation documentation file');
-    let templateMd = fs.readFileSync(path.join(__dirname, DOC_TEMPLATE)).toString();
-    let templateJson = JSON.parse(fs.readFileSync(path.join(__dirname, templateJsonLocation, templateJsonFileName)).toString());
+    let templateMd = fs.readFileSync(path.join(process.cwd(), DOC_TEMPLATE)).toString();
+    let templateJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), templateJsonLocation, templateJsonFileName)).toString());
 
     for (let key of Object.keys(templateJson)) {
         templateMd = templateMd.replace(`\${${key}}`, templateJson[key]);
@@ -55,8 +55,12 @@ function createDoc(templateJsonLocation: string, markdownOutputLocation: string,
 
     const fileName = markdownFileName ? markdownFileName : templateJson.name + '.md';
 
+    const documentationDirectory = path.join(process.cwd(), markdownOutputLocation)
+    if (!fs.existsSync(documentationDirectory)){
+        fs.mkdirSync(documentationDirectory, { recursive: true });
+    }
 
-    fs.writeFileSync(path.join(__dirname, markdownOutputLocation, fileName), templateMd);
+    fs.writeFileSync(path.join(documentationDirectory, fileName), templateMd);
     console.log('Done generation documentation file.');
 }
 

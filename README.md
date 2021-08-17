@@ -9,6 +9,26 @@ So in order to make this happen I created a `Template` contract, this is based o
 
 For templates i have created the following [`Template` contract](https://raw.githubusercontent.com/hvdb/ado-template-helper/master/template.schema.json)  
 
+
+## usage
+
+```javascript
+node lib/bin.js -h
+Usage: bin [options]
+
+Generate Azure DevOps templates helper
+
+Options:
+  -tl, --templateLocation [path]       template location (default: "templates")
+  -d, --createDoc                      Create documentation (default: true)
+  -s, --createSnippets                 Create snippets (default: true)
+  -s, --markdownOutputLocation [path]  markdownOutputLocation (default: "docs")
+  -tf, --templateJsonFileName [name]   templateJsonFileName (default: "template.json")
+  -mf, --markdownFileName [name]       markdownFileName
+  -h, --help                           display help for command
+```
+
+
 ## Example template json
 
 ```json
@@ -61,7 +81,8 @@ For templates i have created the following [`Template` contract](https://raw.git
 }
 ```
 
-Usage template in azure pipeline  
+How this template is used in an Azure DevOps pipeline.  
+This should be familiar if you used templates before, if not please have a look at the documentation:   
 
 ```yaml
 resources:
@@ -77,8 +98,17 @@ resources:
       azureFeedId: '1234'
 ```
 
-Example of generate documentation:
+## What does the plugin do?
 
+### Generation of 'snippets'
+
+These snippets can be used in an VSCode extension to give support to people that are using your templates.  
+(Looking for ways to create a 'flexible' snippet extension, more to come.)  
+
+### Example of generate documentation:
+
+As documentaion of templates is hard and normally it is done somewhere else, the documentation is most of te time not uptodate.  
+By using the `template` definition for creating the documentation we prevent this.  
 
 # createProject
 *Create a project*
