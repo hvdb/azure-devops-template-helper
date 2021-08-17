@@ -18,9 +18,9 @@ ${snippet}
 ## Meta data
 
 Author: ${author}  
-Type: ${type}
-Support: ${helpUrl}
-Id: ${id}
+Type: ${type}  
+Support: ${helpUrl}  
+Id: ${id}  
 
 ### Release notes
 

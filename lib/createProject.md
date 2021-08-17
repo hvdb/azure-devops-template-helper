@@ -53,9 +53,9 @@ $2
 ## Meta data
 
 Author: hvdb  
-Type: stage
-Support: https://www.github.com/hvdb/ado-template-helper
-Id: create-project/stages/default.yml@templates
+Type: stage  
+Support: https://www.github.com/hvdb/ado-template-helper  
+Id: create-project/stages/default.yml@templates  
 
 ### Release notes
 
