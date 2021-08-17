@@ -7,8 +7,11 @@
     "types": "./lib/index.d.ts",
     "scripts": {
         "test": "jest",
-        "build": "tsc",
-        "build:check": "tsc --noEmit"
+        "build": "npm run build:compile && npm run build:after && npm run build:generate",
+        "build:compile": "tsc",
+        "build:check": "tsc --noEmit",
+        "build:after" :"cp -R ./templates/ ./lib/templates",
+        "build:generate" : "node lib/bin.js"
     },
     "repository": {
         "type": "git",

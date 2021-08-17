@@ -1,0 +1,47 @@
+{
+  "id": "create-project/stages/default.yml@templates",
+  "name": "createProject",
+  "friendlyName": "Create a project",
+  "type" : "stage",
+  "description": "Here comes a lot of text that would help to know what this template does",
+  "author": "hvdb",
+  "helpUrl": "https://www.github.com/hvdb/ado-template-helper",
+  "helpMarkdown": "You can use this by adding the following to your yml file:   ```yaml - template: create-project/stages/default.yml@templates```",
+  "category": "Utility",
+  "visibility": [
+    "Build"
+  ],
+  "demands": [],
+  "version": "1.0.0",
+  "releaseNotes": "Added more information on how to use",
+  "inputs": [
+    {
+      "name": "condition",
+      "type": "boolean",
+      "label": "The condition to execute this stage or not",
+      "required": false,
+      "helpMarkDown": "See: [conditions](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/conditions)"
+    },
+    {
+      "name": "dependsOn",
+      "type": "object",
+      "label": "The stage dependency",
+      "required": false
+    },
+    {
+      "name": "azureFeedId",
+      "type": "string",
+      "defaultValue": "3219392309",
+      "label": "Azure feedID",
+      "required": true,
+      "helpMarkDown": "Can be retrieve via x"
+    },
+    {
+      "name": "workingDirectory",
+      "type": "string",
+      "defaultValue": ".",
+      "label": "Working directory",
+      "required": false
+    }
+  ]
+}
