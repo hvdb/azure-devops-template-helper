@@ -15,7 +15,6 @@ const adoTemplateHelper = (): void => {
         createDoc(path.join(cmdOptions.templateLocation, folder), cmdOptions.markdownOutputLocation, cmdOptions.templateJsonFileName, cmdOptions.markdownFileName);
       }
     });
-
   }
 
   if (cmdOptions.createSnippets) {
