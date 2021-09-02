@@ -17,7 +17,7 @@ const retrieveOptionsFromCommandline = (): CommandLineOptions => {
     .option('-tl, --templateLocation [path]', 'template location', 'templates')
     .option('-d, --createDoc', 'Create documentation', true)
     .option('-s, --createSnippets', 'Create snippets', true)
-    .option('-s, --markdownOutputLocation [path]', 'markdownOutputLocation', 'docs')
+    .option('-dl, --markdownOutputLocation [path]', 'markdownOutputLocation', 'docs')
     .option('-tf, --templateJsonFileName [name]', 'templateJsonFileName', 'template.json')
     .option('-mf, --markdownFileName [name]', 'markdownFileName');
 
