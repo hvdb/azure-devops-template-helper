@@ -29,74 +29,6 @@ Options:
 ```
 
 
-## Example template json
-
-```json
-{
-  "id": "create-project/stages/default.yml@templates",
-  "name": "createProject",
-  "type": "stage",
-  "friendlyName": "Create a project",
-  "description": "Here comes a lot of text that would help to know what this template does",
-  "author": "hvdb",
-  "helpUrl": "https://www.github.com/hvdb/ado-template-helper",
-  "helpMarkdown": "You can use this by adding the following to your yml file:   ```yaml - template: create-project/stages/default.yml@templates```",
-  "category": "Utility",
-  "visibility": [
-    "Build"
-  ],
-  "demands": [],
-  "version": "1.0.0",
-  "releaseNotes": "Added more information on how to use",
-  "inputs": [
-    {
-      "name": "condition",
-      "type": "boolean",
-      "label": "The condition to execute this stage or not",
-      "required": false,
-      "helpMarkDown": "See: [conditions](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/conditions)"
-    },
-    {
-      "name": "dependsOn",
-      "type": "object",
-      "label": "The stage dependency",
-      "required": false
-    },
-    {
-      "name": "azureFeedId",
-      "type": "string",
-      "defaultValue": "3219392309",
-      "label": "Azure feedID",
-      "required": true,
-      "helpMarkDown": "Can be retrieve via x"
-    },
-    {
-      "name": "workingDirectory",
-      "type": "string",
-      "defaultValue": ".",
-      "label": "Working directory",
-      "required": false
-    }
-  ]
-}
-```
-
-How this template is used in an Azure DevOps pipeline.  
-This should be familiar if you used templates before, if not please have a look at the documentation:   
-
-```yaml
-resources:
-  repositories:
-    - repository: templates
-      type: git
-      name: Project/templates
-      ref: refs/heads/master
-
-  - template: create-project/stages/default.yml@templates
-    parameters:
-      condition: succeeded()
-      azureFeedId: '1234'
-```
 
 ## What does the plugin do?
 
@@ -105,70 +37,10 @@ resources:
 These snippets can be used in an VSCode extension to give support to people that are using your templates.  
 (Looking for ways to create a 'flexible' snippet extension, more to come.)  
 
-### Example of generate documentation:
+### Generation of template documentation
 
-As documentaion of templates is hard and normally it is done somewhere else, the documentation is most of te time not uptodate.  
-By using the `template` definition for creating the documentation we prevent this.  
-
-# createProject
-*Create a project*
-
-Here comes a lot of text that would help to know what this template does
-
-## What does it do?
-
-You can use this by adding the following to your yml file:   ```yaml - template: create-project/stages/default.yml@templates```
-
-## Required inputs 
-### azureFeedId 
-*Azure feedID*  
-
-type : `string`  
-defaultValue : `3219392309`  
-
-Can be retrieve via x
-
-## Optional inputs 
-### condition 
-*The condition to execute this stage or not*  
-
-type : `boolean`  
-
-See: [conditions](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/conditions)
-
-### dependsOn 
-*The stage dependency*  
-
-type : `object`  
-
-### workingDirectory 
-*Working directory*  
-
-type : `string`  
-defaultValue : `.`  
+It can generate markdown spec files that describes the template, how to use and what it does etc.  
 
 
+See [WIKI](https://github.com/hvdb/ado-template-helper/wiki) for example of [template.json](https://github.com/hvdb/ado-template-helper/wiki/Example-template.json) and [generated documentation](https://github.com/hvdb/ado-template-helper/wiki/Documentation-example)
 
-## Usage example
-
-```yml
-
-- template: create-project/stages/default.yml@templates
-  parameters:
-    #condition:  # Optional  # See: [conditions](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/conditions)
-    #dependsOn:  # Optional 
-    azureFeedId: ${1:3219392309}  # Required  # Can be retrieve via x
-    #workingDirectory:  # Optional 
-$2
-```
-
-## Meta data
-
-Author: hvdb  
-Type: stage
-Support: https://www.github.com/hvdb/ado-template-helper
-Id: create-project/stages/default.yml@templates
-
-### Release notes
-
-Added more information on how to use
