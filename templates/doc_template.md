@@ -7,7 +7,13 @@ ${description}
 
 ${helpMarkdown}
 
-${inputs_normalized}
+
+## Parameters
+
+| Name | Type  | Description   | Default  | Required    | Extra information |
+|---|---|---|---|---|---|
+${inputs_table}
+
 
 ## Usage example
 

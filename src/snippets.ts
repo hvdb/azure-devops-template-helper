@@ -14,7 +14,8 @@ export function createSnippet(jsonTemplateData: any, prefix: string): string {
         snippet += `"  parameters:",\n`;
 
         let requiredIndex = 1;
-
+        //Sort on required
+        jsonTemplateData.inputs.sort((elem: { required: any; }) => elem.required ? -1 : 1);
         jsonTemplateData.inputs.forEach((input: any) => {
             snippet += createLine(input, requiredIndex);
             if (input.required) {

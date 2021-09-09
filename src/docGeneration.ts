@@ -5,15 +5,30 @@ import { createSnippet } from './snippets';
 const DOC_TEMPLATE = 'templates/doc_template.md';
 const TEMPLATE_JSON_FILE = 'dist/templates/template.json';
 
-function createInputMarkdown(inputs: any, element: any): string {
-    inputs += `### ${element['name']} \n`;
-    inputs += `*${element['label']}*  \n`
-    for (let key of Object.keys(element)) {
-        if (key !== 'name' && key !== 'label' && key !== 'required' && key !== 'helpMarkDown') {
-            inputs += `\n${key} : \`${element[key]}\`  `
-        }
+function normalizeBooleanValue(elementValue: string) {
+    if (elementValue && elementValue !== undefined) {
+        return elementValue
     }
-    inputs += `${element['helpMarkDown'] ? '\n\n' + element['helpMarkDown'] : ''}\n\n`;
+    return false;
+}
+
+function normalizedUndefinedValues(elementValue: string) {
+    if (elementValue && elementValue !== undefined) {
+        return elementValue
+    }
+    return '';
+}
+
+function createInputMarkdown(inputs: any, element: any): string {
+    inputs += '|';
+    inputs += `${normalizedUndefinedValues(element['name'])} |`
+    inputs += `${normalizedUndefinedValues(element['type'])} |`
+    inputs += `${normalizedUndefinedValues(element['label'])} |`
+    inputs += `${normalizedUndefinedValues(element['defaultValue'])} |`
+    inputs += `${normalizeBooleanValue(element['required'])} |`
+    inputs += `${normalizedUndefinedValues(element['helpMarkDown'])} |`
+    inputs += '| \n';
+
     return inputs;
 }
 
@@ -40,23 +55,20 @@ function createDoc(templateJsonLocation: string, markdownOutputLocation: string,
     }
 
     // handle inputs
-    let inputsRequired = '';
-    let inputsOptional = '';
+    let inputsTable = '';
+    // Sort on required
+    templateJson.inputs.sort((elem: { required: any; }) => elem.required ? -1 : 1);
+    
     templateJson.inputs.forEach((element: any) => {
-        if (element['required']) {
-            inputsRequired = createInputMarkdown(inputsRequired, element);
-        } else {
-            inputsOptional = createInputMarkdown(inputsOptional, element);
-        }
+        inputsTable = createInputMarkdown(inputsTable, element);
     });
 
-    const inputs = '## Required inputs \n' + inputsRequired + '## Optional inputs \n' + inputsOptional;
-    templateMd = templateMd.replace('${inputs_normalized}', inputs);
+    templateMd = templateMd.replace('${inputs_table}', inputsTable);
 
     const fileName = markdownFileName ? markdownFileName : templateJson.name + '.md';
 
     const documentationDirectory = path.join(process.cwd(), markdownOutputLocation)
-    if (!fs.existsSync(documentationDirectory)){
+    if (!fs.existsSync(documentationDirectory)) {
         fs.mkdirSync(documentationDirectory, { recursive: true });
     }
 
