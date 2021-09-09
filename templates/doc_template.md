@@ -11,14 +11,14 @@ ${helpMarkdown}
 ## Parameters
 
 
- Name | Type  | Description   | Default  | Required    | Extra information 
----|---|---|---|---|---
+| Name | Type  | Description   | Default  | Required    | Extra information | 
+|---|---|---|---|---|---|
 ${inputs_table}
 
 
 ## Usage example
 
-```yml
+```yaml
 ${snippet}
 ```
 
@@ -26,7 +26,7 @@ ${snippet}
 
 Author: ${author}  
 Type: ${type}  
-Support: ${helpUrl}  
+Support: [Get help](${helpUrl})  
 Id: ${id}  
 
 ### Release notes

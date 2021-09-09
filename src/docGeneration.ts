@@ -20,12 +20,13 @@ function normalizedUndefinedValues(elementValue: string) {
 }
 
 function createInputMarkdown(inputs: any, element: any): string {
+    inputs += '|';
     inputs += `${normalizedUndefinedValues(element['name'])} |`
     inputs += `${normalizedUndefinedValues(element['type'])} |`
     inputs += `${normalizedUndefinedValues(element['label'])} |`
     inputs += `${normalizedUndefinedValues(element['defaultValue'])} |`
     inputs += `${normalizeBooleanValue(element['required'])} |`
-    inputs += `${normalizedUndefinedValues(element['helpMarkDown'])}`
+    inputs += `${normalizedUndefinedValues(element['helpMarkDown'])} |`
     inputs += '\n';
 
     return inputs;
