@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema",
-  "id": "https://raw.githubusercontent.com/hvdb/ado-template-helper/master/tasks.schema.json",
+  "id": "https://raw.githubusercontent.com/hvdb/ado-template-helper/master/template.schema.json",
   "title": "Azure DevOps Template schema",
   "type": "object",
   "additionalProperties": false,
