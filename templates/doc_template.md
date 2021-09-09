@@ -10,8 +10,9 @@ ${helpMarkdown}
 
 ## Parameters
 
-| Name | Type  | Description   | Default  | Required    | Extra information |
-|---|---|---|---|---|---|
+
+ Name | Type  | Description   | Default  | Required    | Extra information 
+---|---|---|---|---|---
 ${inputs_table}
 
 
