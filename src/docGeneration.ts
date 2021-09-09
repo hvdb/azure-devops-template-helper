@@ -27,7 +27,7 @@ function createInputMarkdown(inputs: any, element: any): string {
     inputs += `${normalizedUndefinedValues(element['defaultValue'])} |`
     inputs += `${normalizeBooleanValue(element['required'])} |`
     inputs += `${normalizedUndefinedValues(element['helpMarkDown'])} |`
-    inputs += '| \n';
+    inputs += '\n';
 
     return inputs;
 }
