@@ -1,11 +1,9 @@
 # ${name}
 *${friendlyName}*
 
-${description}
-
 ## What does it do?
 
-${helpMarkDown}
+${description}
 
 
 ## Parameters
