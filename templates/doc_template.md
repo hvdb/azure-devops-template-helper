@@ -5,7 +5,7 @@ ${description}
 
 ## What does it do?
 
-${helpMarkdown}
+${helpMarkDown}
 
 
 ## Parameters
@@ -26,7 +26,7 @@ ${snippet}
 
 Author: ${author}  
 Type: ${type}  
-Support: [Get help](${helpUrl})  
+Support: ${helpMarkDown}[Get help](${helpUrl})  
 Id: ${id}  
 
 ### Release notes

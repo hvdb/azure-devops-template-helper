@@ -5,20 +5,20 @@ ${description}
 
 ## What does it do?
 
-${helpMarkdown}
+${helpMarkDown}
 
 
 ## Parameters
 
 
- Name | Type  | Description   | Default  | Required    | Extra information 
----|---|---|---|---|---
+| Name | Type  | Description   | Default  | Required    | Extra information | 
+|---|---|---|---|---|---|
 ${inputs_table}
 
 
 ## Usage example
 
-```yml
+```yaml
 ${snippet}
 ```
 
@@ -26,7 +26,7 @@ ${snippet}
 
 Author: ${author}  
 Type: ${type}  
-Support: ${helpUrl}  
+Support: ${helpMarkDown}[Get help](${helpUrl})  
 Id: ${id}  
 
 ### Release notes

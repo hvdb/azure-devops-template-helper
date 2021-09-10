@@ -21,7 +21,7 @@
     },
     "description": {
       "type": "string",
-      "description": "Detailed description of what template task does"
+      "description": "Detailed description of what template template does"
     },
     "helpUrl": {
       "type": "string"
@@ -34,7 +34,7 @@
     },
     "category": {
       "type": "string",
-      "description": "Where the task appears in Azure DevOps. Use the 'Azure *' categories for Azure DevOps and Azure DevOps Server 2019. Use the other categories for Team Foundation Server 2018 and below.",
+      "description": "Where the Template appears in Azure DevOps.",
       "enum": [
         "Build",
         "Utility",
@@ -45,7 +45,7 @@
     },
     "version": {
       "type": "string",
-      "description": "Always update this when you release your task, so that the agents utilize the latest code.",
+      "description": "Nice to have",
       "minLength": 5,
       "maxLength": 14,
       "pattern": "^(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)$"
