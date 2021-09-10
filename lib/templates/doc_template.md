@@ -20,12 +20,17 @@ ${inputs_table}
 ${snippet}
 ```
 
+## Support
+
+${helpMarkDown}   
+
+[Get help](${helpUrl})  
+
 ## Meta data
 
-Author: ${author}  
-Type: ${type}  
-Support: ${helpMarkDown}[Get help](${helpUrl})  
-Id: ${id}  
+- Id: ${id}  
+- Type: ${type}  
+- Author: ${author}  
 
 ### Release notes
 
