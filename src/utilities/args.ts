@@ -6,6 +6,7 @@ interface CommandLineOptions {
     createSnippets: boolean
     markdownOutputLocation: string
     templateJsonFileName: string
+    vsCodePrefix?: string
     markdownFileName?: string
 }
 
@@ -19,7 +20,8 @@ const retrieveOptionsFromCommandline = (): CommandLineOptions => {
     .option('-s, --createSnippets', 'Create snippets', true)
     .option('-dl, --markdownOutputLocation [path]', 'markdownOutputLocation', 'docs')
     .option('-tf, --templateJsonFileName [name]', 'templateJsonFileName', 'template.json')
-    .option('-mf, --markdownFileName [name]', 'markdownFileName');
+    .option('-mf, --markdownFileName [name]', 'markdownFileName')
+    .option('-vsc, --vscodePrefix', 'VSCode snippet prefix', '');
 
     program.parse(process.argv);
     const options: CommandLineOptions = program.opts();

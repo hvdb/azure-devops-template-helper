@@ -12,7 +12,7 @@ const adoTemplateHelper = (): void => {
     const folders: string[] = fs.readdirSync(cmdOptions.templateLocation);
     folders.forEach(function (folder) {
       if (fs.existsSync(path.join(cmdOptions.templateLocation, folder, 'template.json'))) {
-        createDoc(path.join(cmdOptions.templateLocation, folder), cmdOptions.markdownOutputLocation, cmdOptions.templateJsonFileName, cmdOptions.markdownFileName);
+        createDoc(path.join(cmdOptions.templateLocation, folder), cmdOptions.markdownOutputLocation, cmdOptions.templateJsonFileName, cmdOptions.vsCodePrefix, cmdOptions.markdownFileName);
       }
     });
   }

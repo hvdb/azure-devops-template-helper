@@ -32,7 +32,7 @@ function createInputMarkdown(inputs: any, element: any): string {
     return inputs;
 }
 
-function createDoc(templateJsonLocation: string, markdownOutputLocation: string, templateJsonFileName: string = 'template.json', markdownFileName?: string) {
+function createDoc(templateJsonLocation: string, markdownOutputLocation: string, templateJsonFileName: string = 'template.json', vsCodePrefix: string = 'pre', markdownFileName?: string) {
     console.log('Starting generation documentation file');
     let templateMd = fs.readFileSync(path.join(process.cwd(), DOC_TEMPLATE)).toString();
     let templateJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), templateJsonLocation, templateJsonFileName)).toString());
@@ -42,7 +42,7 @@ function createDoc(templateJsonLocation: string, markdownOutputLocation: string,
     }
 
     //Create snippet from template
-    const snippet: string = createSnippet(templateJson, 'sdk');
+    const snippet: string = createSnippet(templateJson, vsCodePrefix);
     const jsonSnipper = JSON.parse(snippet);
 
     // Put the snippet yml inside the md doc.
