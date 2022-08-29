@@ -51,11 +51,11 @@ function createLine(input: any, index: number, renderWithoutPrefixes: boolean): 
         }
         line += `${valueStart}${escapeAllSpecialCaracters(input.defaultValue)}${valueEnd} ${displayOptions(input)} # Required `;
     } else {
-        let valueStart = '$';
+        let valueStart = `$${index}`;
         if (renderWithoutPrefixes) {
             valueStart = '';
         }
-        line += input.required ? `${valueStart}${index} ${displayOptions(input)} # Required ` : `${displayOptions(input)} # Optional `;
+        line += input.required ? `${valueStart} ${displayOptions(input)} # Required ` : `${displayOptions(input)} # Optional `;
     }
 
     line += input.helpMarkDown ? ` # ${escapeAllSpecialCaracters(input.helpMarkDown)}",\n` : `",\n`;
