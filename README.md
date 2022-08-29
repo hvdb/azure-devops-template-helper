@@ -27,7 +27,7 @@ Options:
   -tf, --templateJsonFileName [name]    templateJsonFileName (default: "template.json")
   -mf, --markdownFileName [name]        markdownFileName
   -vsc, --vscodePrefix                  VSCode snippet prefix
-  -rwp, --renderWithoutPrefixes         Render snippets without the prefixes needed for vscode plugin
+  -rwp, --renderWithoutPrefixes         Render snippets without the prefixes needed for vscode plugin (default: false)
   -h, --help                            display help for command
 ```
 

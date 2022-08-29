@@ -24,7 +24,7 @@ export function createSnippet(jsonTemplateData: any, prefix: string, renderWitho
         });
 
         if (renderWithoutPrefixes) {
-            snippet += `"${requiredIndex}"\n`;
+            snippet += `""\n`;
         } else {
             snippet += `"$${requiredIndex}"\n`;
         }
@@ -43,13 +43,13 @@ function createLine(input: any, index: number, renderWithoutPrefixes: boolean): 
     let line = `"    ${input.required ? '' : '#'}${input.name}: `;
 
     if (input.defaultValue && input.required) {
-        let valueStart = '$\{';
+        let valueStart = `$\{${index}:`;
         let valueEnd = '\}';
         if (renderWithoutPrefixes) {
             valueStart = '';
             valueEnd = '';
         }
-        line += `${valueStart}${index}:${escapeAllSpecialCaracters(input.defaultValue)}${valueEnd} ${displayOptions(input)} # Required `;
+        line += `${valueStart}${escapeAllSpecialCaracters(input.defaultValue)}${valueEnd} ${displayOptions(input)} # Required `;
     } else {
         let valueStart = '$';
         if (renderWithoutPrefixes) {
