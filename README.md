@@ -20,13 +20,15 @@ Usage: bin [options]
 Generate Azure DevOps templates helper
 
 Options:
-  -tl, --templateLocation [path]       template location (default: "templates")
-  -d, --createDoc                      Create documentation (default: true)
-  -s, --createSnippets                 Create snippets (default: true)
-  -s, --markdownOutputLocation [path]  markdownOutputLocation (default: "docs")
-  -tf, --templateJsonFileName [name]   templateJsonFileName (default: "template.json")
-  -mf, --markdownFileName [name]       markdownFileName
-  -h, --help                           display help for command
+  -tl, --templateLocation [path]        template location (default: "templates")
+  -d, --createDoc                       Create documentation (default: true)
+  -s, --createSnippets                  Create snippets (default: true)
+  -dl, --markdownOutputLocation [path]  markdownOutputLocation (default: "docs")
+  -tf, --templateJsonFileName [name]    templateJsonFileName (default: "template.json")
+  -mf, --markdownFileName [name]        markdownFileName
+  -vsc, --vscodePrefix                  VSCode snippet prefix
+  -rwp, --renderWithoutPrefixes         Render snippets without the prefixes needed for vscode plugin (default: false)
+  -h, --help                            display help for command
 ```
 
 
@@ -44,4 +46,3 @@ It can generate markdown spec files that describes the template, how to use and 
 
 
 See [WIKI](https://github.com/hvdb/ado-template-helper/wiki) for example of [template.json](https://github.com/hvdb/ado-template-helper/wiki/Example-template.json) and [generated documentation](https://github.com/hvdb/ado-template-helper/wiki/Documentation-example)
-
