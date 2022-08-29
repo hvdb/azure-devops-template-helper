@@ -6,6 +6,7 @@ interface CommandLineOptions {
     templateJsonFileName: string;
     vsCodePrefix?: string;
     markdownFileName?: string;
+    renderWithoutPrefixes: boolean;
 }
 declare const retrieveOptionsFromCommandline: () => CommandLineOptions;
 export { CommandLineOptions, retrieveOptionsFromCommandline, };
