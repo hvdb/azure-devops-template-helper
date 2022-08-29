@@ -32,7 +32,7 @@ function createInputMarkdown(inputs: any, element: any): string {
     return inputs;
 }
 
-function createDoc(templateJsonLocation: string, markdownOutputLocation: string, templateJsonFileName: string = 'template.json', vsCodePrefix: string = 'pre', markdownFileName?: string) {
+function createDoc(templateJsonLocation: string, markdownOutputLocation: string, templateJsonFileName: string = 'template.json', vsCodePrefix: string = 'pre', markdownFileName?: string, renderWithoutPrefixes: boolean = false) {
     console.log('Starting generation documentation file');
     let templateMd = fs.readFileSync(path.join(process.cwd(), DOC_TEMPLATE)).toString();
     let templateJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), templateJsonLocation, templateJsonFileName)).toString());
@@ -42,7 +42,7 @@ function createDoc(templateJsonLocation: string, markdownOutputLocation: string,
     }
 
     //Create snippet from template
-    const snippet: string = createSnippet(templateJson, vsCodePrefix);
+    const snippet: string = createSnippet(templateJson, vsCodePrefix, renderWithoutPrefixes);
     const jsonSnipper = JSON.parse(snippet);
 
     // Put the snippet yml inside the md doc.
@@ -58,7 +58,7 @@ function createDoc(templateJsonLocation: string, markdownOutputLocation: string,
     let inputsTable = '';
     // Sort on required
     templateJson.inputs.sort((elem: { required: any; }) => elem.required ? -1 : 1);
-    
+
     templateJson.inputs.forEach((element: any) => {
         inputsTable = createInputMarkdown(inputsTable, element);
     });

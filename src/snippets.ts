@@ -4,7 +4,7 @@
  * @param jsonData Template json data
  * @returns the snippet
  */
-export function createSnippet(jsonTemplateData: any, prefix: string): string {
+export function createSnippet(jsonTemplateData: any, prefix: string, renderWithoutPrefixes: boolean): string {
     if (jsonTemplateData.inputs) {
         let snippet = `{\n`;
         snippet += `"${jsonTemplateData.friendlyName}": {\n`;
@@ -17,13 +17,17 @@ export function createSnippet(jsonTemplateData: any, prefix: string): string {
         //Sort on required
         jsonTemplateData.inputs.sort((elem: { required: any; }) => elem.required ? -1 : 1);
         jsonTemplateData.inputs.forEach((input: any) => {
-            snippet += createLine(input, requiredIndex);
+            snippet += createLine(input, requiredIndex, renderWithoutPrefixes);
             if (input.required) {
                 requiredIndex++;
             }
         });
 
-        snippet += `"$${requiredIndex}"\n`;
+        if (renderWithoutPrefixes) {
+            snippet += `"${requiredIndex}"\n`;
+        } else {
+            snippet += `"$${requiredIndex}"\n`;
+        }
         snippet += `],\n`;
         let description = escapeAllSpecialCaracters(jsonTemplateData.description);
         snippet += `"description": "${description != '' ? description : ''}"\n`;
@@ -35,13 +39,23 @@ export function createSnippet(jsonTemplateData: any, prefix: string): string {
     return '';
 }
 
-function createLine(input: any, index: number): string {
+function createLine(input: any, index: number, renderWithoutPrefixes: boolean): string {
     let line = `"    ${input.required ? '' : '#'}${input.name}: `;
 
     if (input.defaultValue && input.required) {
-        line += `$\{${index}:${escapeAllSpecialCaracters(input.defaultValue)}\} ${displayOptions(input)} # Required `;
+        let valueStart = '$\{';
+        let valueEnd = '\}';
+        if (renderWithoutPrefixes) {
+            valueStart = '';
+            valueEnd = '';
+        }
+        line += `${valueStart}${index}:${escapeAllSpecialCaracters(input.defaultValue)}${valueEnd} ${displayOptions(input)} # Required `;
     } else {
-        line += input.required ? `$${index} ${displayOptions(input)} # Required ` : `${displayOptions(input)} # Optional `;
+        let valueStart = '$';
+        if (renderWithoutPrefixes) {
+            valueStart = '';
+        }
+        line += input.required ? `${valueStart}${index} ${displayOptions(input)} # Required ` : `${displayOptions(input)} # Optional `;
     }
 
     line += input.helpMarkDown ? ` # ${escapeAllSpecialCaracters(input.helpMarkDown)}",\n` : `",\n`;
