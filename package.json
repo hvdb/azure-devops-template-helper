@@ -1,6 +1,6 @@
 {
     "name": "ado-template-helper",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Helper for azure devops templates",
     "bin": "./lib/bin.js",
     "main": "./lib/index.js",

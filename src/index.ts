@@ -9,12 +9,7 @@ const adoTemplateHelper = (): void => {
   const cmdOptions: CommandLineOptions = retrieveOptionsFromCommandline();
 
   if (cmdOptions.createDoc) {
-    const folders: string[] = fs.readdirSync(cmdOptions.templateLocation);
-    folders.forEach(function (folder) {
-      if (fs.existsSync(path.join(cmdOptions.templateLocation, folder, 'template.json'))) {
-        createDoc(path.join(cmdOptions.templateLocation, folder), cmdOptions.markdownOutputLocation, cmdOptions.templateJsonFileName, cmdOptions.vsCodePrefix, cmdOptions.markdownFileName, cmdOptions.renderWithoutPrefixes);
-      }
-    });
+    createDocs(fs.readdirSync(cmdOptions.templateLocation), cmdOptions, cmdOptions.templateLocation)
   }
 
   if (cmdOptions.createSnippets) {
@@ -22,6 +17,20 @@ const adoTemplateHelper = (): void => {
     console.log('Generating snippets');
   }
 }
+
+const createDocs = (folders: string[], cmdOptions: CommandLineOptions, fullPath: string) => {
+  folders.forEach(function (folder) {
+    // So there can be another folder in here
+    if (fs.statSync(path.join(fullPath, folder)).isDirectory()) {
+      createDocs(fs.readdirSync(path.join(fullPath, folder)), cmdOptions, path.join(fullPath, folder));
+    }
+
+    if (fs.existsSync(path.join(fullPath, folder, 'template.json'))) {
+      createDoc(path.join(fullPath, folder), cmdOptions.markdownOutputLocation, cmdOptions.templateJsonFileName, cmdOptions.vsCodePrefix, cmdOptions.markdownFileName, cmdOptions.renderWithoutPrefixes);
+    }
+  });
+}
+
 
 export {
   adoTemplateHelper,
